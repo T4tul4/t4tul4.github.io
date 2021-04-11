@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>test on Tatula</title>
+    <link>https://t4tul4.github.io/tags/test/</link>
+    <description>Recent content in test on Tatula</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://t4tul4.github.io/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PASSING A SHELL FROM COVENANT TO METASPLOIT</title>
+      <link>https://t4tul4.github.io/posts/passing-a-shell-from-covenant-to-metasploit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/posts/passing-a-shell-from-covenant-to-metasploit/</guid>
+      <description>PASSING A SHELL FROM COVENANT TO METASPLOIT You might be wondering why i needed to move a shell/grunt from covenant to msf.
+There are a couple of reasons, they include:
+ It is open source and actively developed. Its supports large testing networks by making use of CIDR identifiers. It offers smart payload generation and switching mechanism. It has more exploits. It offers recursive download of files.  I will divide it into two parts.</description>
+    </item>
+    
+  </channel>
+</rss>
