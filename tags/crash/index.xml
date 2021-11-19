@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>crash on Tatula</title>
+    <link>https://t4tul4.github.io/tags/crash/</link>
+    <description>Recent content in crash on Tatula</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://t4tul4.github.io/tags/crash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>UBUNTU 20.04 NOT BOOTING UP</title>
+      <link>https://t4tul4.github.io/posts/ubuntu-20.04-not-booting-up/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/posts/ubuntu-20.04-not-booting-up/</guid>
+      <description>Hey there 😃,
+Funny story i encountered this error because of my impatience, i was upgrading from ubuntu 19.10 to ubuntu 20.04 then my laptop just hanged.
+I restarted it not knowing the status of the upgrade.
+That&amp;rsquo;s when i knew i had messed up. My OS broke.
+The machine had already started moving files and it was not done.
+Before I continue never restart or shutdown your laptop in the middle of an update whatever the circumstances might be.</description>
+    </item>
+    
+  </channel>
+</rss>

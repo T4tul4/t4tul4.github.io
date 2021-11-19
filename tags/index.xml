@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Tatula</title>
+    <link>https://t4tul4.github.io/tags/</link>
+    <description>Recent content in Tags on Tatula</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://t4tul4.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>covenant</title>
+      <link>https://t4tul4.github.io/tags/covenant/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/tags/covenant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>metasploit</title>
+      <link>https://t4tul4.github.io/tags/metasploit/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/tags/metasploit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crash</title>
+      <link>https://t4tul4.github.io/tags/crash/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/tags/crash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://t4tul4.github.io/tags/ubuntu/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>amavis</title>
+      <link>https://t4tul4.github.io/tags/amavis/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/tags/amavis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iRedmail</title>
+      <link>https://t4tul4.github.io/tags/iredmail/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/tags/iredmail/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

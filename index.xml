@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tatula</title>
+    <link>https://t4tul4.github.io/</link>
+    <description>Recent content on Tatula</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://t4tul4.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PASSING A SHELL FROM COVENANT TO METASPLOIT</title>
+      <link>https://t4tul4.github.io/posts/passing-a-shell-from-covenant-to-metasploit/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/posts/passing-a-shell-from-covenant-to-metasploit/</guid>
+      <description>Introduction You might be wondering why i needed to move a shell/grunt from covenant to msf.
+There are a couple of reasons, they include:
+ It is open source and actively developed. Its supports large testing networks by making use of CIDR identifiers. It offers smart payload generation and switching mechanism. It has more exploits. It offers recursive download of files.  I will divide it into two parts. Part one covers starting metasploit with a valid certificate and part two covers passing a shell to msf.</description>
+    </item>
+    
+    <item>
+      <title>UBUNTU 20.04 NOT BOOTING UP</title>
+      <link>https://t4tul4.github.io/posts/ubuntu-20.04-not-booting-up/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/posts/ubuntu-20.04-not-booting-up/</guid>
+      <description>Hey there 😃,
+Funny story i encountered this error because of my impatience, i was upgrading from ubuntu 19.10 to ubuntu 20.04 then my laptop just hanged.
+I restarted it not knowing the status of the upgrade.
+That&amp;rsquo;s when i knew i had messed up. My OS broke.
+The machine had already started moving files and it was not done.
+Before I continue never restart or shutdown your laptop in the middle of an update whatever the circumstances might be.</description>
+    </item>
+    
+    <item>
+      <title>RESIZING HARD DISK SPACE ON A VIRTUALBOX</title>
+      <link>https://t4tul4.github.io/posts/resizing-hard-disk-space-on-a-virtualbox/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/posts/resizing-hard-disk-space-on-a-virtualbox/</guid>
+      <description>Lets jump straight into it.
+Step 1: Click on the Global Tools button
+Step 2: Select the appropriate disk name that your virtualBox uses.
+Adjust its size to the value you desire.
+We will be increasing its size from 20GB to 60GB.
+Click apply before going back to Machine Tools.
+Step 3: Create a new virtualBox machine.
+Name it gparted and go to the settings.
+Load the gparted iso you downloaded.</description>
+    </item>
+    
+    <item>
+      <title>AMAVISD-NEW ERROR ENCOUNTERED WHILE INSTALLING IREDMAIL 0.9.9</title>
+      <link>https://t4tul4.github.io/posts/amavisd-new-error-encountered-while-installing-iredmail-0.9.9/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/posts/amavisd-new-error-encountered-while-installing-iredmail-0.9.9/</guid>
+      <description>I was setting up a mail server using the new updated iRedMail where you can deploy an OPEN SOURCE, FULLY FLEDGED, FULL-FEATURED mail server in several minutes.
+You can download it from here.
+I fired up iredmail
+./iredmail.sh I got the below errors
+Error One Please configure a fully qualified domain name (FQDN) in /etc/hosts before we go further.
+Solution Configure the domain name in the /etc/hosts file
+sudo vim /etc/hosts Replace this section</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://t4tul4.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/about/</guid>
+      <description>Nyawira!!</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://t4tul4.github.io/presentations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/presentations/</guid>
+      <description>Nyawira!!</description>
+    </item>
+    
+  </channel>
+</rss>

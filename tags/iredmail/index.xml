@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iRedmail on Tatula</title>
+    <link>https://t4tul4.github.io/tags/iredmail/</link>
+    <description>Recent content in iRedmail on Tatula</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 07 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://t4tul4.github.io/tags/iredmail/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AMAVISD-NEW ERROR ENCOUNTERED WHILE INSTALLING IREDMAIL 0.9.9</title>
+      <link>https://t4tul4.github.io/posts/amavisd-new-error-encountered-while-installing-iredmail-0.9.9/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/posts/amavisd-new-error-encountered-while-installing-iredmail-0.9.9/</guid>
+      <description>I was setting up a mail server using the new updated iRedMail where you can deploy an OPEN SOURCE, FULLY FLEDGED, FULL-FEATURED mail server in several minutes.
+You can download it from here.
+I fired up iredmail
+./iredmail.sh I got the below errors
+Error One Please configure a fully qualified domain name (FQDN) in /etc/hosts before we go further.
+Solution Configure the domain name in the /etc/hosts file
+sudo vim /etc/hosts Replace this section</description>
+    </item>
+    
+  </channel>
+</rss>

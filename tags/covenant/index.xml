@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>covenant on Tatula</title>
+    <link>https://t4tul4.github.io/tags/covenant/</link>
+    <description>Recent content in covenant on Tatula</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://t4tul4.github.io/tags/covenant/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PASSING A SHELL FROM COVENANT TO METASPLOIT</title>
+      <link>https://t4tul4.github.io/posts/passing-a-shell-from-covenant-to-metasploit/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/posts/passing-a-shell-from-covenant-to-metasploit/</guid>
+      <description>Introduction You might be wondering why i needed to move a shell/grunt from covenant to msf.
+There are a couple of reasons, they include:
+ It is open source and actively developed. Its supports large testing networks by making use of CIDR identifiers. It offers smart payload generation and switching mechanism. It has more exploits. It offers recursive download of files.  I will divide it into two parts. Part one covers starting metasploit with a valid certificate and part two covers passing a shell to msf.</description>
+    </item>
+    
+    <item>
+      <title>RESIZING HARD DISK SPACE ON A VIRTUALBOX</title>
+      <link>https://t4tul4.github.io/posts/resizing-hard-disk-space-on-a-virtualbox/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://t4tul4.github.io/posts/resizing-hard-disk-space-on-a-virtualbox/</guid>
+      <description>Lets jump straight into it.
+Step 1: Click on the Global Tools button
+Step 2: Select the appropriate disk name that your virtualBox uses.
+Adjust its size to the value you desire.
+We will be increasing its size from 20GB to 60GB.
+Click apply before going back to Machine Tools.
+Step 3: Create a new virtualBox machine.
+Name it gparted and go to the settings.
+Load the gparted iso you downloaded.</description>
+    </item>
+    
+  </channel>
+</rss>
